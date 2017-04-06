@@ -1,9 +1,11 @@
 package com.xwkj.recommend.bean;
 
 import com.xwkj.recommend.domain.Referrer;
+import org.directwebremoting.annotations.DataTransferObject;
 
 import javax.persistence.Column;
 
+@DataTransferObject
 public class ReferrerBean {
 
     private String rid;

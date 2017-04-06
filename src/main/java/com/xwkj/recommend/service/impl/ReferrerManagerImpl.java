@@ -1,14 +1,18 @@
 package com.xwkj.recommend.service.impl;
 
+import com.xwkj.recommend.bean.ReferrerBean;
 import com.xwkj.recommend.domain.Referrer;
-import com.xwkj.recommend.service.ReferrerService;
+import com.xwkj.recommend.service.ReferrerManager;
 import com.xwkj.recommend.service.common.ManagerTemplate;
 import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RemoteProxy(name = "ReferrerManager")
-public class ReferrerServiceImpl extends ManagerTemplate implements ReferrerService {
+public class ReferrerManagerImpl extends ManagerTemplate implements ReferrerManager {
 
     @RemoteMethod
     @Transactional
@@ -32,4 +36,12 @@ public class ReferrerServiceImpl extends ManagerTemplate implements ReferrerServ
         return referrer != null;
     }
 
+    @RemoteMethod
+    public List<ReferrerBean> getAll() {
+        List<ReferrerBean> referrerBeans = new ArrayList<ReferrerBean>();
+        for (Referrer referrer : referrerDao.findAll()) {
+            referrerBeans.add(new ReferrerBean(referrer));
+        }
+        return referrerBeans;
+    }
 }

@@ -1,6 +1,10 @@
 package com.xwkj.recommend.service;
 
-public interface ReferrerService {
+import com.xwkj.recommend.bean.ReferrerBean;
+
+import java.util.List;
+
+public interface ReferrerManager {
 
     /**
      * Register a referrer with telephone and password.
@@ -20,5 +24,11 @@ public interface ReferrerService {
      * @return
      */
     boolean isTelephoneExist(String telephone);
+
+    /**
+     *
+     * @return
+     */
+    List<ReferrerBean> getAll();
 
 }
