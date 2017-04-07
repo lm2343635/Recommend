@@ -15,6 +15,9 @@ public class Order implements Serializable {
     private String oid;
 
     @Column(nullable = false)
+    private String number;
+
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)
@@ -48,11 +51,11 @@ public class Order implements Serializable {
     private Long endAt;
 
     @ManyToOne
-    @JoinTable(name = "wid")
+    @JoinColumn(name = "wid")
     private Worker worker;
 
     @ManyToOne
-    @JoinTable(name = "rid")
+    @JoinColumn(name = "rid", nullable = false)
     private Referrer referrer;
 
     public String getOid() {
@@ -61,6 +64,14 @@ public class Order implements Serializable {
 
     public void setOid(String oid) {
         this.oid = oid;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getName() {

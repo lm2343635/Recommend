@@ -8,6 +8,7 @@ import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,4 +45,26 @@ public class ReferrerManagerImpl extends ManagerTemplate implements ReferrerMana
         }
         return referrerBeans;
     }
+
+    @RemoteMethod
+    public boolean login(String telephone, String password, HttpSession session) {
+        Referrer referrer = referrerDao.getRefferByTelephone(telephone);
+        if (referrer == null) {
+            return false;
+        }
+        if (!referrer.getPassword().equals(password)) {
+            return false;
+        }
+        session.setAttribute(ReferrerFlag, referrer.getRid());
+        return true;
+    }
+
+    public ReferrerBean checkSession(HttpSession session) {
+        Referrer referrer = getReferrerFromSession(session);
+        if (referrer == null) {
+            return null;
+        }
+        return new ReferrerBean(referrer);
+    }
+
 }
