@@ -3,14 +3,13 @@
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed glyphicon glyphicon-th-list" data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1"></button>
-            <a class="navbar-brand" href="javascript:void(0)">大元分销方案</a>
+            <a class="navbar-brand" href="javascript:void(0)">快易清洗</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul id="menu-bar" class="nav navbar-nav logined-btn">
-                <li><a href="activities.html">营销方案</a></li>
-                <li><a href="employees.html">会员管理</a></li>
-                <li><a href="check.html">会员审核</a></li>
-                <li><a href="wechaters.html">访问查询</a></li>
+                <li><a href="orders.html">订单管理</a></li>
+                <li><a href="workers.html">维修师傅</a></li>
+                <li><a href="referrers.html">分销商</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/logout/admin">退出</a></li>
@@ -19,15 +18,10 @@
     </div>
 </nav>
 <script type="text/javascript">
-//    var map = {
-//        activities: 0,
-//        editActivity: 0,
-//        viewers: 0,
-//        employees: 1,
-//        sharedActivityes: 1,
-//        check: 2,
-//        wechaters: 3,
-//        visitedActivities: 3
-//    }
-//    $("#menu-bar>li").eq(map[getPageFullName().split(".")[0]]).addClass("active");
+    var map = {
+        orders: 0,
+        workers: 1,
+        referrers: 2,
+    }
+    $("#menu-bar>li").eq(map[getPageFullName().split(".")[0]]).addClass("active");
 </script>

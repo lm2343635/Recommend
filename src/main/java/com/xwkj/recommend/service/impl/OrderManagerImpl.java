@@ -3,6 +3,7 @@ package com.xwkj.recommend.service.impl;
 import com.xwkj.common.util.DateTool;
 import com.xwkj.common.util.Debug;
 import com.xwkj.common.util.MathTool;
+import com.xwkj.recommend.bean.OrderBean;
 import com.xwkj.recommend.domain.Order;
 import com.xwkj.recommend.domain.Referrer;
 import com.xwkj.recommend.service.OrderManager;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @RemoteProxy(name = "OrderManager")
@@ -35,7 +37,7 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
         order.setType(type);
         order.setRemark(remark);
         order.setPrice(0);
-        order.setState(0);
+        order.setState(StateCreate);
         order.setCreateAt(System.currentTimeMillis());
         order.setReferrer(referrer);
         if (orderDao.save(order) == null) {
@@ -43,6 +45,10 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
             return null;
         }
         return order.getNumber();
+    }
+
+    public List<OrderBean> findIn(String start, String end) {
+        return null;
     }
 
 }

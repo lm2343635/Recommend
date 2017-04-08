@@ -42,7 +42,7 @@ public class Order implements Serializable {
     private Long createAt;
 
     @Column
-    private Long deductAt;
+    private Long deliverAt;
 
     @Column
     private Long finishAt;
@@ -138,12 +138,12 @@ public class Order implements Serializable {
         this.createAt = createAt;
     }
 
-    public Long getDeductAt() {
-        return deductAt;
+    public Long getDeliverAt() {
+        return deliverAt;
     }
 
-    public void setDeductAt(Long deductAt) {
-        this.deductAt = deductAt;
+    public void setDeliverAt(Long deliverAt) {
+        this.deliverAt = deliverAt;
     }
 
     public Long getFinishAt() {
