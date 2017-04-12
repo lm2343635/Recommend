@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
         order.setRemark(remark);
         order.setPrice(0);
         order.setState(StateCreate);
-        order.setCreateAt(System.currentTimeMillis());
+        order.setCreateAt(new Date());
         order.setReferrer(referrer);
         if (orderDao.save(order) == null) {
             Debug.error("Create new order internal error.");
@@ -47,8 +48,26 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
         return order.getNumber();
     }
 
-    public List<OrderBean> findIn(String start, String end) {
-        return null;
+    @RemoteMethod
+    public List<OrderBean> searchIn(String start, String end) {
+
+        Date startDate = DateTool.transferDate(start, DateTool.YEAR_MONTH_DATE_FORMAT);
+        Date endDate = DateTool.transferDate(end, DateTool.YEAR_MONTH_DATE_FORMAT);
+        List<OrderBean> orderBeans = new ArrayList<OrderBean>();
+        for (Order order : orderDao.findByStartEnd(startDate, endDate)) {
+            orderBeans.add(new OrderBean(order, true));
+        }
+        return orderBeans;
+    }
+
+    @RemoteMethod
+    public OrderBean getOrder(String oid) {
+        Order order = orderDao.get(oid);
+        if (order == null) {
+            Debug.error("Cannot get order object by this oid.");
+            return null;
+        }
+        return new OrderBean(order, false);
     }
 
 }

@@ -9,7 +9,7 @@ var Applied = 2;
 function checkAdminSession(doAfterCheck) {
     AdminManager.checkSession(function (username) {
         if (username == null) {
-            location.href = "/error/session.html";
+            location.href = "session.html";
             return null;
         } else {
             doAfterCheck(username);

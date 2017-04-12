@@ -158,13 +158,13 @@ public class OrderBean {
         this.type = order.getType();
         this.price = order.getPrice();
         this.state = order.getState();
-        this.createAt = new Date(order.getCreateAt());
+        this.createAt = order.getCreateAt();
         if (!simple) {
             this.address = order.getAddress();
             this.remark = order.getRemark();
-            this.deliverAt = order.getDeliverAt() == null ? null : new Date(order.getDeliverAt());
-            this.finishAt = order.getFinishAt() == null ? null : new Date(order.getFinishAt());
-            this.endAt = order.getEndAt() == null ? null : new Date(order.getEndAt());
+            this.deliverAt = order.getDeliverAt();
+            this.finishAt = order.getFinishAt();
+            this.endAt = order.getEndAt();
             this.worker = order.getWorker() == null ? null : new WorkerBean();
             this.referrer = order.getReferrer() == null ? null : new ReferrerBean(order.getReferrer());
         }

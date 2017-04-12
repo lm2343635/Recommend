@@ -33,5 +33,14 @@ public interface OrderManager {
      * @param end
      * @return
      */
-    List<OrderBean> findIn(String start, String end);
+    List<OrderBean> searchIn(String start, String end);
+
+    /**
+     * Get order bean
+     *
+     * @param oid
+     * @return
+     */
+    OrderBean getOrder(String oid);
+
 }

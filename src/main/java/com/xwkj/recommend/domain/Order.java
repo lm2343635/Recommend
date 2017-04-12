@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "recommend_order")
@@ -39,16 +40,16 @@ public class Order implements Serializable {
     private Integer state;
 
     @Column(nullable = false)
-    private Long createAt;
+    private Date createAt;
 
     @Column
-    private Long deliverAt;
+    private Date deliverAt;
 
     @Column
-    private Long finishAt;
+    private Date finishAt;
 
     @Column
-    private Long endAt;
+    private Date endAt;
 
     @ManyToOne
     @JoinColumn(name = "wid")
@@ -130,35 +131,35 @@ public class Order implements Serializable {
         this.state = state;
     }
 
-    public Long getCreateAt() {
+    public Date getCreateAt() {
         return createAt;
     }
 
-    public void setCreateAt(Long createAt) {
+    public void setCreateAt(Date createAt) {
         this.createAt = createAt;
     }
 
-    public Long getDeliverAt() {
+    public Date getDeliverAt() {
         return deliverAt;
     }
 
-    public void setDeliverAt(Long deliverAt) {
+    public void setDeliverAt(Date deliverAt) {
         this.deliverAt = deliverAt;
     }
 
-    public Long getFinishAt() {
+    public Date getFinishAt() {
         return finishAt;
     }
 
-    public void setFinishAt(Long finishAt) {
+    public void setFinishAt(Date finishAt) {
         this.finishAt = finishAt;
     }
 
-    public Long getEndAt() {
+    public Date getEndAt() {
         return endAt;
     }
 
-    public void setEndAt(Long endAt) {
+    public void setEndAt(Date endAt) {
         this.endAt = endAt;
     }
 
