@@ -14,6 +14,7 @@ public class ReferrerBean {
     private String wechat;
     private int balance;
     private boolean applying;
+    private String password;
 
     public String getRid() {
         return rid;
@@ -63,6 +64,14 @@ public class ReferrerBean {
         this.applying = applying;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public ReferrerBean(Referrer referrer) {
         this.rid = referrer.getRid();
         this.telephone = referrer.getTelephone();
@@ -70,5 +79,6 @@ public class ReferrerBean {
         this.wechat = referrer.getWechat();
         this.balance = referrer.getBalance();
         this.applying = referrer.getApplying();
+        this.password = referrer.getPassword();
     }
 }

@@ -165,7 +165,7 @@ public class OrderBean {
             this.deliverAt = order.getDeliverAt();
             this.finishAt = order.getFinishAt();
             this.endAt = order.getEndAt();
-            this.worker = order.getWorker() == null ? null : new WorkerBean();
+            this.worker = order.getWorker() == null ? null : new WorkerBean(order.getWorker());
             this.referrer = order.getReferrer() == null ? null : new ReferrerBean(order.getReferrer());
         }
     }

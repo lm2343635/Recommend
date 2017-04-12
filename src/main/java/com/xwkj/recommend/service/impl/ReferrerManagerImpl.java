@@ -38,7 +38,10 @@ public class ReferrerManagerImpl extends ManagerTemplate implements ReferrerMana
     }
 
     @RemoteMethod
-    public List<ReferrerBean> getAll() {
+    public List<ReferrerBean> getAll(HttpSession session) {
+        if (!checkAdminSession(session)) {
+            return null;
+        }
         List<ReferrerBean> referrerBeans = new ArrayList<ReferrerBean>();
         for (Referrer referrer : referrerDao.findAll()) {
             referrerBeans.add(new ReferrerBean(referrer));

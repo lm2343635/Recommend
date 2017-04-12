@@ -32,9 +32,10 @@ public interface ReferrerManager {
     /**
      * Get all user for admin
      *
+     * @param session
      * @return
      */
-    List<ReferrerBean> getAll();
+    List<ReferrerBean> getAll(HttpSession session);
 
     /**
      * User login

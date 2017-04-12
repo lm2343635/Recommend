@@ -14,7 +14,7 @@ public class Worker implements Serializable {
     @GenericGenerator(name = "uuid", strategy = "uuid")
     private String wid;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String number;
 
     @Column(nullable = false)
