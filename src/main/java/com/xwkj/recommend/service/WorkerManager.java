@@ -20,10 +20,12 @@ public interface WorkerManager {
     /**
      * Get all worker for admin
      *
+     * @param onlyEnable
      * @param session
      * @return
      */
-    List<WorkerBean> getAll(HttpSession session);
+    List<WorkerBean> getWorkers(boolean onlyEnable, HttpSession session);
+
 
     /**
      * Change worker state.

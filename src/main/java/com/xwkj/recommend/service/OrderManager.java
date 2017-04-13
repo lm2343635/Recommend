@@ -43,4 +43,16 @@ public interface OrderManager {
      */
     OrderBean getOrder(String oid);
 
+    /**
+     * Admin deliver an order to a worker.
+     *
+     * @param oid
+     * @param wid
+     * @param price
+     * @param type
+     * @param session
+     * @return
+     */
+    boolean deliver(String oid, String wid, int price, String type, HttpSession session);
+
 }

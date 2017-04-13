@@ -26,7 +26,7 @@ function searchOrder(start, end) {
                 name: order.name,
                 telephone: order.telephone,
                 type: order.type,
-                state: order.state
+                state: StateDescription[order.state]
             });
         }
     });

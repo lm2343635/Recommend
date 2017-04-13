@@ -24,4 +24,9 @@ public class WorkerDaoHibernate extends BaseHibernateDaoSupport<Worker> implemen
         return workers.get(0);
     }
 
+    public List<Worker> findEnable() {
+        String hql = "from Workers where enable = true order order by number";
+        return (List<Worker>) getHibernateTemplate().find(hql);
+    }
+
 }

@@ -1,6 +1,16 @@
-var NotApply = 0;
-var NotCheck = 1;
-var Applied = 2;
+var StateCreate = 0;
+var StateDeliver = 1;
+var StateFinish = 2;
+var StateEnd = 3;
+var Statebandon = -1;
+
+var StateDescription = {
+    "0": "未派发",
+    "1": "已派发",
+    "2": "已完成",
+    "3": "已结算",
+    "-1": "废弃"
+};
 
 /**
  * 检查管理员session，返回管理员名称
@@ -97,9 +107,9 @@ function exchangeElement(a, b) {
  * @param num
  * @returns
  */
-function isNum(integer) {
+function isNum(num) {
     var patten = new RegExp(/^-?(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/);
-    return patten.test(integer);
+    return patten.test(num);
 }
 
 /**

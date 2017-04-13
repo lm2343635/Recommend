@@ -1,4 +1,27 @@
+var types = [
+    "家用油烟机",
+    "空调挂机",
+    "空调柜机",
+    "中央空调",
+    "波轮洗衣机",
+    "滚筒洗衣机",
+    "燃气式",
+    "电热式",
+    "单开门冰箱",
+    "双开门冰箱",
+    "对开门冰箱",
+    "家用灶台",
+    "家用微波炉",
+    "家用消毒柜"
+];
+
 $(document).ready(function () {
+
+    for (var i in types) {
+        $("#create-type-list").mengular(".type-list-template", {
+            type: types[i]
+        });
+    }
 
     $("#create-submit").click(function () {
         var name = $("#create-name").val();

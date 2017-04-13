@@ -6,6 +6,7 @@ import com.xwkj.common.util.MathTool;
 import com.xwkj.recommend.bean.OrderBean;
 import com.xwkj.recommend.domain.Order;
 import com.xwkj.recommend.domain.Referrer;
+import com.xwkj.recommend.domain.Worker;
 import com.xwkj.recommend.service.OrderManager;
 import com.xwkj.recommend.service.common.ManagerTemplate;
 import org.directwebremoting.annotations.RemoteMethod;
@@ -50,7 +51,6 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
 
     @RemoteMethod
     public List<OrderBean> searchIn(String start, String end) {
-
         Date startDate = DateTool.transferDate(start, DateTool.YEAR_MONTH_DATE_FORMAT);
         Date endDate = DateTool.transferDate(end, DateTool.YEAR_MONTH_DATE_FORMAT);
         List<OrderBean> orderBeans = new ArrayList<OrderBean>();
@@ -68,6 +68,35 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
             return null;
         }
         return new OrderBean(order, false);
+    }
+
+    @RemoteMethod
+    @Transactional
+    public boolean deliver(String oid, String wid, int price, String type, HttpSession session) {
+        if (!checkAdminSession(session)) {
+            return false;
+        }
+        Order order = orderDao.get(oid);
+        if (order == null) {
+            Debug.error("Cannot get order by this oid.");
+            return false;
+        }
+        if (order.getState() >= StateDeliver) {
+            Debug.error("Order has been deliverd!");
+            return false;
+        }
+        Worker worker = workerDao.get(wid);
+        if (worker == null) {
+            Debug.error("Cannot get worker by this wid.");
+            return false;
+        }
+        order.setWorker(worker);
+        order.setPrice(price);
+        order.setType(type);
+        order.setDeliverAt(new Date());
+        order.setState(StateDeliver);
+        orderDao.update(order);
+        return true;
     }
 
 }

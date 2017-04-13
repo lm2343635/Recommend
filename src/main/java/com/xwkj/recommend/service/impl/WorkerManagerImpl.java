@@ -35,12 +35,13 @@ public class WorkerManagerImpl extends ManagerTemplate implements WorkerManager 
     }
 
     @RemoteMethod
-    public List<WorkerBean> getAll(HttpSession session) {
+    public List<WorkerBean> getWorkers(boolean onlyEnable, HttpSession session) {
         if (!checkAdminSession(session)) {
             return null;
         }
         List<WorkerBean> workerBeans = new ArrayList<WorkerBean>();
-        for (Worker worker : workerDao.findAll("number", false)) {
+        List<Worker> workers = onlyEnable? workerDao.findEnable() : workerDao.findAll("number", false);
+        for (Worker worker : workers) {
             workerBeans.add(new WorkerBean(worker));
         }
         return workerBeans;

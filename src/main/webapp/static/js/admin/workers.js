@@ -31,7 +31,7 @@ $(document).ready(function () {
 });
 
 function loadWorkers() {
-    WorkerManager.getAll(function (workers) {
+    WorkerManager.getWorkers(false, function (workers) {
         if (workers == null) {
             location.href = "session.html";
             return;
