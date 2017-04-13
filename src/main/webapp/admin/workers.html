@@ -7,10 +7,12 @@
     <title>维修师傅</title>
     <link href="/static/images/favicon.ico" type="image/x-icon" rel="icon">
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-switch.min.css" rel="stylesheet">
     <link href="/static/css/font-awesome.min.css" rel="stylesheet">
     <link href="/static/css/mengular.css" rel="stylesheet">
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap-switch.min.js"></script>
     <script src="/static/js/jquery.bootstrap.min.js"></script>
     <script src="/static/js/mengular.js"></script>
     <script src="/static/js/tools.js"></script>
@@ -52,13 +54,15 @@
                 <th>工号</th>
                 <th>师傅姓名</th>
                 <th>账户密码</th>
+                <th>在职状态</th>
             </tr>
             </thead>
             <tbody>
-            <tr id="${rid}$" class="mengular-template worker">
-                <td>${telephone}$</td>
+            <tr id="${wid}$" class="mengular-template worker-list-template">
+                <td>${number}$</td>
                 <td>${name}$</td>
-                <td>${wechat}$</td>
+                <td>${password}$</td>
+                <td class="worker-list-state"><input type="checkbox" data-size="mini" data-on-text="在职" data-off-text="离职"></td>
             </tr>
             </tbody>
         </table>

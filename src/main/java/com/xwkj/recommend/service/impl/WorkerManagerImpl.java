@@ -1,5 +1,6 @@
 package com.xwkj.recommend.service.impl;
 
+import com.xwkj.common.util.Debug;
 import com.xwkj.recommend.bean.WorkerBean;
 import com.xwkj.recommend.domain.Worker;
 import com.xwkj.recommend.service.WorkerManager;
@@ -45,4 +46,19 @@ public class WorkerManagerImpl extends ManagerTemplate implements WorkerManager 
         return workerBeans;
     }
 
+    @RemoteMethod
+    @Transactional
+    public boolean changeState(String wid, boolean state, HttpSession session) {
+        if (!checkAdminSession(session)) {
+            return false;
+        }
+        Worker worker = workerDao.get(wid);
+        if (worker == null) {
+            Debug.error("Cannot find this worker by this wid.");
+            return false;
+        }
+        worker.setState(state);
+        workerDao.update(worker);
+        return true;
+    }
 }

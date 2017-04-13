@@ -25,4 +25,14 @@ public interface WorkerManager {
      */
     List<WorkerBean> getAll(HttpSession session);
 
+    /**
+     * Change worker state.
+     *
+     * @param wid
+     * @param state
+     * @param session
+     * @return
+     */
+    boolean changeState(String wid, boolean state, HttpSession session);
+
 }
