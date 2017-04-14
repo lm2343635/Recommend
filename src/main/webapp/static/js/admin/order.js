@@ -11,10 +11,10 @@ $(document).ready(function () {
 
             switch(order.state) {
                 case StateCreate:
-
+                    $("#deliver-order-button").removeAttr("disabled");
                     break;
                 case StateDeliver:
-                    $("#deliver-order-button").remove();
+
                     break;
                 default:
                     break;

@@ -64,4 +64,14 @@ public interface OrderManager {
      */
     List<OrderBean> getTaskOrder(HttpSession session);
 
+    /**
+     * Worker finish an order.
+     *
+     * @param oid
+     * @param session
+     * @return
+     */
+    boolean workerFinishOrder(String oid, HttpSession session);
+
+
 }

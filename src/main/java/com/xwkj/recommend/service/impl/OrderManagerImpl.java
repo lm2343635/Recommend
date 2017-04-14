@@ -112,4 +112,26 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
         return orderBeans;
     }
 
+    @RemoteMethod
+    @Transactional
+    public boolean workerFinishOrder(String oid, HttpSession session) {
+        Worker worker = getWorkerFromSession(session);
+        if (worker == null) {
+            return false;
+        }
+        Order order = orderDao.get(oid);
+        if (order == null) {
+            Debug.error("Cannot find the order by this oid.");
+            return false;
+        }
+        if (order.getWorker() != worker) {
+            Debug.error("This worker has no privilege to finish the order, because admin has not delivered the order the order to this worker.");
+            return false;
+        }
+        order.setState(StateFinish);
+        order.setFinishAt(new Date());
+        orderDao.update(order);
+        return true;
+    }
+
 }
