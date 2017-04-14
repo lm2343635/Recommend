@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface WorkerManager {
 
+    public static final String WorkerFlag = "05b3dfd95b61d061594015b00d9061b0";
+
     /**
      * Add a new worker
      *
@@ -36,5 +38,23 @@ public interface WorkerManager {
      * @return
      */
     boolean changeState(String wid, boolean state, HttpSession session);
+
+    /**
+     * Worker login.
+     *
+     * @param number
+     * @param password
+     * @param session
+     * @return
+     */
+    boolean login(String number, String password, HttpSession session);
+
+    /**
+     * Check worker session.
+     *
+     * @param session
+     * @return
+     */
+    WorkerBean checkSession(HttpSession session);
 
 }

@@ -1,5 +1,6 @@
 package com.xwkj.recommend.service.impl;
 
+import com.xwkj.common.util.Debug;
 import com.xwkj.recommend.bean.ReferrerBean;
 import com.xwkj.recommend.domain.Referrer;
 import com.xwkj.recommend.service.ReferrerManager;
@@ -53,9 +54,11 @@ public class ReferrerManagerImpl extends ManagerTemplate implements ReferrerMana
     public boolean login(String telephone, String password, HttpSession session) {
         Referrer referrer = referrerDao.getRefferByTelephone(telephone);
         if (referrer == null) {
+            Debug.error("Cannot find the referrer by this telephone.");
             return false;
         }
         if (!referrer.getPassword().equals(password)) {
+            Debug.error("Referrer's password is wrong!");
             return false;
         }
         session.setAttribute(ReferrerFlag, referrer.getRid());

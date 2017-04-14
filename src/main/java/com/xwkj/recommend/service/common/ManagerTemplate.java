@@ -4,8 +4,10 @@ import com.xwkj.recommend.dao.OrderDao;
 import com.xwkj.recommend.dao.ReferrerDao;
 import com.xwkj.recommend.dao.WorkerDao;
 import com.xwkj.recommend.domain.Referrer;
+import com.xwkj.recommend.domain.Worker;
 import com.xwkj.recommend.service.AdminManager;
 import com.xwkj.recommend.service.ReferrerManager;
+import com.xwkj.recommend.service.WorkerManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpSession;
@@ -56,4 +58,13 @@ public class ManagerTemplate {
         String rid = (String) session.getAttribute(ReferrerManager.ReferrerFlag);
         return referrerDao.get(rid);
     }
+
+    public Worker getWorkerFromSession(HttpSession session) {
+        if (session.getAttribute(WorkerManager.WorkerFlag) == null) {
+            return null;
+        }
+        String wid = (String) session.getAttribute(WorkerManager.WorkerFlag);
+        return workerDao.get(wid);
+    }
+
 }

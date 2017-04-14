@@ -1,27 +1,27 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>快易代理登录</title>
+    <title>快易师傅登录</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="/static/css/weui.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/weui.min.js"></script>
     <script src="/dwr/engine.js"></script>
-    <script src="/dwr/interface/ReferrerManager.js"></script>
-    <script src="/static/js/referrer/login.js"></script>
+    <script src="/dwr/interface/WorkerManager.js"></script>
+    <script src="/static/js/worker/login.js"></script>
 </head>
 <body>
 <div class="page input js_show">
     <div class="page__hd">
-        <h1 class="page__title">快易代理登录</h1>
+        <h1 class="page__title">快易师傅登录</h1>
     </div>
     <div class="page__bd">
         <div class="weui-cells weui-cells_form">
             <div class="weui-cell">
-                <div class="weui-cell__hd"><label class="weui-label">手机号</label></div>
+                <div class="weui-cell__hd"><label class="weui-label">工号</label></div>
                 <div class="weui-cell__bd">
-                    <input id="login-telephone" class="weui-input" type="tel" pattern="[0-9]*" placeholder="请输入手机号">
+                    <input id="login-number" class="weui-input" type="tel" pattern="[0-9]*" placeholder="请输入工号">
                 </div>
             </div>
             <div class="weui-cell">
@@ -30,6 +30,7 @@
                     <input id="login-password" class="weui-input" type="password" placeholder="请输入密码">
                 </div>
             </div>
+
         </div>
         <div class="weui-btn-area">
             <button id="login-submit" class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips">登录</button>
@@ -37,9 +38,6 @@
     </div>
     <div class="page__bd page__bd_spacing">
         <div class="weui-footer weui-footer_fixed-bottom">
-            <p class="weui-footer__links">
-                <a href="register.html" class="weui-footer__link">快易代理注册</a>
-            </p>
             <p class="weui-footer__text">忘记密码请联系客服微信找回</p>
         </div>
     </div>

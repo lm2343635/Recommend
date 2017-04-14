@@ -62,4 +62,28 @@ public class WorkerManagerImpl extends ManagerTemplate implements WorkerManager 
         workerDao.update(worker);
         return true;
     }
+
+    @RemoteMethod
+    public boolean login(String number, String password, HttpSession session) {
+        Worker worker = workerDao.getByNumber(number);
+        if (worker == null) {
+            Debug.error("Cannot find the worker by this worker number.");
+            return false;
+        }
+        if (!worker.getPassword().equals(password)) {
+            Debug.error("Worker's password is wrong!");
+            return false;
+        }
+        session.setAttribute(WorkerFlag, worker.getWid());
+        return true;
+    }
+
+    public WorkerBean checkSession(HttpSession session) {
+        Worker worker = getWorkerFromSession(session);
+        if (worker == null) {
+            return null;
+        }
+        return new WorkerBean(worker);
+    }
+
 }
