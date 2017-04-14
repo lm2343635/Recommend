@@ -22,7 +22,7 @@ function searchOrder(start, end) {
             $("#order-list tbody").mengular(".order-list-template", {
                 oid: order.oid,
                 number: order.number,
-                createAt: order.createAt.format(DATE_HOUR_FORMAT),
+                createAt: order.createAt.format(DATE_HOUR_MINUTE_SECOND_FORMAT),
                 name: order.name,
                 telephone: order.telephone,
                 type: order.type,

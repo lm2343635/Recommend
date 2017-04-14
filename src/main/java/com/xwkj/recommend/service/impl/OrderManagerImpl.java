@@ -99,4 +99,17 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
         return true;
     }
 
+    @RemoteMethod
+    public List<OrderBean> getTaskOrder(HttpSession session) {
+        Worker worker = getWorkerFromSession(session);
+        if (worker == null) {
+            return null;
+        }
+        List<OrderBean> orderBeans = new ArrayList<OrderBean>();
+        for (Order order : orderDao.findByWorker(worker, StateDeliver)) {
+            orderBeans.add(new OrderBean(order, false));
+        }
+        return orderBeans;
+    }
+
 }

@@ -28,7 +28,6 @@ public interface WorkerManager {
      */
     List<WorkerBean> getWorkers(boolean onlyEnable, HttpSession session);
 
-
     /**
      * Change worker state.
      *

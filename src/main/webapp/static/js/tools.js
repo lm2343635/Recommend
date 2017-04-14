@@ -16,13 +16,32 @@ var StateDescription = {
  * 检查管理员session，返回管理员名称
  * @param doAfterCheck 验证成功回调函数
  */
-function checkAdminSession(doAfterCheck) {
+function checkAdminSession(done) {
     AdminManager.checkSession(function (username) {
         if (username == null) {
             location.href = "session.html";
-            return null;
         } else {
-            doAfterCheck(username);
+            done(username);
+        }
+    });
+}
+
+function checkWorkerSession(done) {
+    WorkerManager.checkSession(function (worker) {
+        if (worker == null) {
+            location.href = "session.html";
+        } else {
+            done(worker);
+        }
+    });
+}
+
+function checkReferrerSession(done) {
+    ReferrerManager.checkSession(function (referrer) {
+        if (referrer == null) {
+            location.href = "session.html";
+        } else {
+            done(referrer);
         }
     });
 }

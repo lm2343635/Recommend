@@ -3,6 +3,7 @@ package com.xwkj.recommend.dao.impl;
 import com.xwkj.common.hibernate.BaseHibernateDaoSupport;
 import com.xwkj.recommend.dao.OrderDao;
 import com.xwkj.recommend.domain.Order;
+import com.xwkj.recommend.domain.Worker;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -17,8 +18,13 @@ public class OrderDaoHibernate extends BaseHibernateDaoSupport<Order> implements
     }
 
     public List<Order> findByStartEnd(Date start, Date end) {
-        String hql = "from Order where createAt >= ? and createAt <= ?";
+        String hql = "from Order where createAt >= ? and createAt <= ? order by createAt desc";
         return (List<Order>) getHibernateTemplate().find(hql, start, end);
+    }
+
+    public List<Order> findByWorker(Worker worker, int state) {
+        String hql = "from Order where worker = ? and state = ?";
+        return (List<Order>) getHibernateTemplate().find(hql, worker, state);
     }
 
 }

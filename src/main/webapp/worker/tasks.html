@@ -5,16 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="/static/css/weui.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/mengular.css">
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/weui.min.js"></script>
+    <script src="/static/js/mengular.js"></script>
+    <script src="/static/js/tools.js"></script>
     <script src="/dwr/engine.js"></script>
     <script src="/dwr/interface/WorkerManager.js"></script>
+    <script src="/dwr/interface/OrderManager.js"></script>
     <script src="/static/js/worker/tasks.js"></script>
+    <style>
+        #order-list .order-list-template .weui-media-box__desc {
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
 <div class="page input js_show">
     <div class="page__bd">
-
+        <div class="weui-panel">
+            <div id="worker-info" class="weui-panel__hd">@{name}（@{number}）的订单任务</div>
+            <div id="order-list" class="weui-panel__bd">
+                <div id="${oid}$" class="weui-media-box weui-media-box_text mengular-template order-list-template">
+                    <h4 class="weui-media-box__title">${number}$</h4>
+                    <p class="weui-media-box__desc">顾客姓名：${name}$</p>
+                    <p class="weui-media-box__desc">联系方式：${telephone}$</p>
+                    <p class="weui-media-box__desc">顾客地址：${address}$</p>
+                    <p class="weui-media-box__desc">清洗项目：${type}$</p>
+                    <p class="weui-media-box__desc">创建时间：${createAt}$</p>
+                    <p class="weui-media-box__desc">派发时间：${deliverAt}$</p>
+                    <button class="weui-btn weui-btn_mini weui-btn_default order-list-finish">确认完成订单</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page__bd page__bd_spacing">
+        <div class="weui-footer weui-footer_fixed-bottom">
+            <p class="weui-footer__links">
+                <a href="javascript:location.reload()" class="weui-footer__link">刷新订单任务</a>
+            </p>
+        </div>
     </div>
 </div>
 </body>

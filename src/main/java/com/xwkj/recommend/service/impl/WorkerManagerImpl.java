@@ -78,6 +78,7 @@ public class WorkerManagerImpl extends ManagerTemplate implements WorkerManager 
         return true;
     }
 
+    @RemoteMethod
     public WorkerBean checkSession(HttpSession session) {
         Worker worker = getWorkerFromSession(session);
         if (worker == null) {

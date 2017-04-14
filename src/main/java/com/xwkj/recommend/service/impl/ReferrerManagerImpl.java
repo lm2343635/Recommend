@@ -65,6 +65,7 @@ public class ReferrerManagerImpl extends ManagerTemplate implements ReferrerMana
         return true;
     }
 
+    @RemoteMethod
     public ReferrerBean checkSession(HttpSession session) {
         Referrer referrer = getReferrerFromSession(session);
         if (referrer == null) {

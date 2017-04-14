@@ -29,4 +29,6 @@ public class WorkerDaoHibernate extends BaseHibernateDaoSupport<Worker> implemen
         return (List<Worker>) getHibernateTemplate().find(hql);
     }
 
+
+
 }

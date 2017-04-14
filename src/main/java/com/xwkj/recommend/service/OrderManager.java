@@ -1,6 +1,7 @@
 package com.xwkj.recommend.service;
 
 import com.xwkj.recommend.bean.OrderBean;
+import com.xwkj.recommend.domain.Order;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -54,5 +55,13 @@ public interface OrderManager {
      * @return
      */
     boolean deliver(String oid, String wid, int price, String type, HttpSession session);
+
+    /**
+     * Get all task orders for a worker.
+     *
+     * @param session
+     * @return
+     */
+    List<OrderBean> getTaskOrder(HttpSession session);
 
 }
