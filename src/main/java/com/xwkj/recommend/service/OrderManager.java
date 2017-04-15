@@ -28,6 +28,14 @@ public interface OrderManager {
     String create(String name, String telephone, String address, String type, String remark, HttpSession session);
 
     /**
+     * Get order bean
+     *
+     * @param oid
+     * @return
+     */
+    OrderBean getOrder(String oid);
+
+    /**
      * Find all orders in a period.
      *
      * @param start
@@ -36,13 +44,23 @@ public interface OrderManager {
      */
     List<OrderBean> searchIn(String start, String end);
 
+
     /**
-     * Get order bean
+     * Get all task orders for a worker.
      *
-     * @param oid
+     * @param session
      * @return
      */
-    OrderBean getOrder(String oid);
+    List<OrderBean> getTaskOrders(HttpSession session);
+
+    /**
+     * Get orders by state for referrer.
+     *
+     * @param state
+     * @param session
+     * @return
+     */
+    List<OrderBean> getReferrerOrders(int state, HttpSession session);
 
     /**
      * Admin deliver an order to a worker.
@@ -55,14 +73,6 @@ public interface OrderManager {
      * @return
      */
     boolean deliver(String oid, String wid, int price, String type, HttpSession session);
-
-    /**
-     * Get all task orders for a worker.
-     *
-     * @param session
-     * @return
-     */
-    List<OrderBean> getTaskOrder(HttpSession session);
 
     /**
      * Worker finish an order.

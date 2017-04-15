@@ -17,14 +17,62 @@
     <script src="/dwr/interface/ReferrerManager.js"></script>
     <script src="/dwr/interface/OrderManager.js"></script>
     <script src="/static/js/referrer/orders.js"></script>
+    <style>
+        .weui-panel {
+            background: transparent;
+        }
+
+        .weui-form-preview {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
 <div class="page tabbar js_show">
     <div class="page__bd" style="height: 100%;">
         <div class="weui-tab">
+            <div id="order-state" class="weui-navbar">
+                <div class="weui-navbar__item weui-bar__item_on">未派发</div>
+                <div class="weui-navbar__item">已派发</div>
+                <div class="weui-navbar__item">已完成</div>
+                <div class="weui-navbar__item">已结算</div>
+            </div>
             <div class="weui-tab__panel">
                 <div class="weui-panel">
-
+                    <div id="order-list" class="page__bd">
+                        <div id="${oid}$" class="weui-form-preview mengular-template order-list-template">
+                            <div class="weui-form-preview__hd">
+                                <div class="weui-form-preview__item">
+                                    <label class="weui-form-preview__label">${number}$</label>
+                                </div>
+                            </div>
+                            <div class="weui-form-preview__bd">
+                                <div class="weui-form-preview__item">
+                                    <label class="weui-form-preview__label">创建时间</label>
+                                    <span class="weui-form-preview__value">${createAt}$</span>
+                                </div>
+                                <div class="weui-form-preview__item">
+                                    <label class="weui-form-preview__label">顾客姓名</label>
+                                    <span class="weui-form-preview__value">${name}$</span>
+                                </div>
+                                <div class="weui-form-preview__item">
+                                    <label class="weui-form-preview__label">服务项目</label>
+                                    <span class="weui-form-preview__value">${type}$</span>
+                                </div>
+                                <div class="weui-form-preview__item">
+                                    <label class="weui-form-preview__label">成交价格</label>
+                                    <span class="weui-form-preview__value">${price}$</span>
+                                </div>
+                                <div class="weui-form-preview__item">
+                                    <label class="weui-form-preview__label">提成金额</label>
+                                    <span class="weui-form-preview__value">${deduct}$</span>
+                                </div>
+                            </div>
+                            <div class="weui-form-preview__ft">
+                                <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">查看</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="foot">

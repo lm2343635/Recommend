@@ -7,7 +7,7 @@ $(document).ready(function () {
             name: worker.name
         })
 
-        OrderManager.getTaskOrder(function (orders) {
+        OrderManager.getTaskOrders(function (orders) {
             for (var i in orders) {
                 var order = orders[i];
                 $("#order-list").mengular(".order-list-template", {

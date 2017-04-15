@@ -17,11 +17,18 @@ var types = [
 
 $(document).ready(function () {
 
-    for (var i in types) {
-        $("#create-type-list").mengular(".type-list-template", {
-            type: types[i]
+    $(document).ready(function () {
+
+        checkReferrerSession(function () {
+            for (var i in types) {
+                $("#create-type-list").mengular(".type-list-template", {
+                    type: types[i]
+                });
+            }
         });
-    }
+
+    });
+
 
     $("#create-submit").click(function () {
         var name = $("#create-name").val();

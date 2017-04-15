@@ -62,6 +62,32 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
     }
 
     @RemoteMethod
+    public List<OrderBean> getTaskOrders(HttpSession session) {
+        Worker worker = getWorkerFromSession(session);
+        if (worker == null) {
+            return null;
+        }
+        List<OrderBean> orderBeans = new ArrayList<OrderBean>();
+        for (Order order : orderDao.findByWorker(worker, StateDeliver)) {
+            orderBeans.add(new OrderBean(order, false));
+        }
+        return orderBeans;
+    }
+
+    @RemoteMethod
+    public List<OrderBean> getReferrerOrders(int state, HttpSession session) {
+        Referrer referrer = getReferrerFromSession(session);
+        if (referrer == null) {
+            return null;
+        }
+        List<OrderBean> orderBeans = new ArrayList<OrderBean>();
+        for (Order order : orderDao.findByStateForReferrer(state, referrer)) {
+            orderBeans.add(new OrderBean(order, true));
+        }
+        return orderBeans;
+    }
+
+    @RemoteMethod
     public OrderBean getOrder(String oid) {
         Order order = orderDao.get(oid);
         if (order == null) {
@@ -98,19 +124,6 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
         order.setState(StateDeliver);
         orderDao.update(order);
         return true;
-    }
-
-    @RemoteMethod
-    public List<OrderBean> getTaskOrder(HttpSession session) {
-        Worker worker = getWorkerFromSession(session);
-        if (worker == null) {
-            return null;
-        }
-        List<OrderBean> orderBeans = new ArrayList<OrderBean>();
-        for (Order order : orderDao.findByWorker(worker, StateDeliver)) {
-            orderBeans.add(new OrderBean(order, false));
-        }
-        return orderBeans;
     }
 
     @RemoteMethod

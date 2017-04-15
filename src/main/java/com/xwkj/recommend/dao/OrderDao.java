@@ -2,6 +2,7 @@ package com.xwkj.recommend.dao;
 
 import com.xwkj.common.hibernate.BaseDao;
 import com.xwkj.recommend.domain.Order;
+import com.xwkj.recommend.domain.Referrer;
 import com.xwkj.recommend.domain.Worker;
 
 import java.util.Date;
@@ -26,4 +27,12 @@ public interface OrderDao extends BaseDao<Order> {
      */
     List<Order> findByWorker(Worker worker, int state);
 
+    /**
+     * Find order by state and referrer
+     *
+     * @param state
+     * @param referrer
+     * @return
+     */
+    List<Order> findByStateForReferrer(int state, Referrer referrer);
 }
