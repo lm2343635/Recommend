@@ -16,11 +16,12 @@ public class OrderBean {
     private String type;
     private String remark;
     private int price;
+    private int deduct;
     private int state;
     private Date createAt;
     private Date deliverAt;
     private Date finishAt;
-    private Date endAt;
+    private Date deductAt;
     private WorkerBean worker;
     private ReferrerBean referrer;
 
@@ -120,12 +121,20 @@ public class OrderBean {
         this.finishAt = finishAt;
     }
 
-    public Date getEndAt() {
-        return endAt;
+    public int getDeduct() {
+        return deduct;
     }
 
-    public void setEndAt(Date endAt) {
-        this.endAt = endAt;
+    public void setDeduct(int deduct) {
+        this.deduct = deduct;
+    }
+
+    public Date getDeductAt() {
+        return deductAt;
+    }
+
+    public void setDeductAt(Date deductAt) {
+        this.deductAt = deductAt;
     }
 
     public WorkerBean getWorker() {
@@ -157,6 +166,7 @@ public class OrderBean {
         this.telephone = order.getTelephone();
         this.type = order.getType();
         this.price = order.getPrice();
+        this.deduct = order.getDeduct();
         this.state = order.getState();
         this.createAt = order.getCreateAt();
         if (!simple) {
@@ -164,7 +174,7 @@ public class OrderBean {
             this.remark = order.getRemark();
             this.deliverAt = order.getDeliverAt();
             this.finishAt = order.getFinishAt();
-            this.endAt = order.getEndAt();
+            this.deductAt = order.getDeductAt();
             this.worker = order.getWorker() == null ? null : new WorkerBean(order.getWorker());
             this.referrer = order.getReferrer() == null ? null : new ReferrerBean(order.getReferrer());
         }

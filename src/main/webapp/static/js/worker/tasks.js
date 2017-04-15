@@ -26,7 +26,7 @@ $(document).ready(function () {
                     var number = $("#" + oid + " .order-list-number").text();
                     var name = $("#" + oid + " .order-list-name").text();
                     weui.confirm("确认完成的订单：" + number + "（" + name + "）", function () {
-                        OrderManager.workerFinishOrder(oid, function (success) {
+                        OrderManager.finish(oid, function (success) {
                            if (success) {
                                $("#" + oid).fadeOut().remove();
                                setTimeout(function () {

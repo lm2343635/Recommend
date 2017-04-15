@@ -1,8 +1,8 @@
 var StateCreate = 0;
 var StateDeliver = 1;
 var StateFinish = 2;
-var StateEnd = 3;
-var Statebandon = -1;
+var StateDeduct = 3;
+var StateBandon = -1;
 
 var StateDescription = {
     "0": "未派发",

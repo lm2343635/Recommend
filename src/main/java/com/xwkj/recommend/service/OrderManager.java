@@ -11,8 +11,8 @@ public interface OrderManager {
     public static final int StateCreate = 0;
     public static final int StateDeliver = 1;
     public static final int StateFinish = 2;
-    public static final int StateEnd = 3;
-    public static final int Statebandon = -1;
+    public static final int StateDeduct = 3;
+    public static final int StateBandon = -1;
 
     /**
      * Create a new order by referrer.
@@ -71,7 +71,17 @@ public interface OrderManager {
      * @param session
      * @return
      */
-    boolean workerFinishOrder(String oid, HttpSession session);
+    boolean finish(String oid, HttpSession session);
 
+    /**
+     * Admin deduct bonus for referrer.
+     *
+     * @param oid
+     * @param price
+     * @param deduct
+     * @param session
+     * @return
+     */
+    boolean deduct(String oid, int price, int deduct, HttpSession session);
 
 }

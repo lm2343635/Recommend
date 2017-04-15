@@ -39,6 +39,7 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
         order.setType(type);
         order.setRemark(remark);
         order.setPrice(0);
+        order.setDeduct(0);
         order.setState(StateCreate);
         order.setCreateAt(new Date());
         order.setReferrer(referrer);
@@ -81,8 +82,8 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
             Debug.error("Cannot get order by this oid.");
             return false;
         }
-        if (order.getState() >= StateDeliver) {
-            Debug.error("Order has been deliverd!");
+        if (order.getState() != StateCreate) {
+            Debug.error("Order cannot be deliverd if state is not StateCreate.");
             return false;
         }
         Worker worker = workerDao.get(wid);
@@ -114,7 +115,7 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
 
     @RemoteMethod
     @Transactional
-    public boolean workerFinishOrder(String oid, HttpSession session) {
+    public boolean finish(String oid, HttpSession session) {
         Worker worker = getWorkerFromSession(session);
         if (worker == null) {
             return false;
@@ -128,8 +129,35 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
             Debug.error("This worker has no privilege to finish the order, because admin has not delivered the order the order to this worker.");
             return false;
         }
+        if (order.getState() != StateDeliver) {
+            Debug.error("Order cannot be finished if state is not StateDeliver.");
+            return false;
+        }
         order.setState(StateFinish);
         order.setFinishAt(new Date());
+        orderDao.update(order);
+        return true;
+    }
+
+    @RemoteMethod
+    @Transactional
+    public boolean deduct(String oid, int price, int deduct, HttpSession session) {
+        if (!checkAdminSession(session)) {
+            return false;
+        }
+        Order order = orderDao.get(oid);
+        if (order == null) {
+            Debug.error("Cannot get order by this oid.");
+            return false;
+        }
+        if (order.getState() != StateFinish) {
+            Debug.error("Order cannot be deducted if state is not StateFinish.");
+            return false;
+        }
+        order.setPrice(price);
+        order.setDeduct(deduct);
+        order.setDeductAt(new Date());
+        order.setState(StateDeduct);
         orderDao.update(order);
         return true;
     }

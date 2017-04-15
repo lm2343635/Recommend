@@ -30,11 +30,14 @@ public class Order implements Serializable {
     @Column(nullable = false)
     private String type;
 
-    @Column
+    @Column(nullable = false)
     private String remark;
 
     @Column(nullable = false)
     private Integer price;
+
+    @Column
+    private Integer deduct;
 
     @Column(nullable = false)
     private Integer state;
@@ -49,7 +52,7 @@ public class Order implements Serializable {
     private Date finishAt;
 
     @Column
-    private Date endAt;
+    private Date deductAt;
 
     @ManyToOne
     @JoinColumn(name = "wid")
@@ -155,12 +158,20 @@ public class Order implements Serializable {
         this.finishAt = finishAt;
     }
 
-    public Date getEndAt() {
-        return endAt;
+    public Integer getDeduct() {
+        return deduct;
     }
 
-    public void setEndAt(Date endAt) {
-        this.endAt = endAt;
+    public void setDeduct(Integer deduct) {
+        this.deduct = deduct;
+    }
+
+    public Date getDeductAt() {
+        return deductAt;
+    }
+
+    public void setDeductAt(Date deductAt) {
+        this.deductAt = deductAt;
     }
 
     public Worker getWorker() {

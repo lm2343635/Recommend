@@ -13,7 +13,10 @@ $(document).ready(function () {
                 case StateCreate:
                     $("#deliver-order-button").removeAttr("disabled");
                     break;
-                case StateDeliver:
+                case StateFinish:
+                    $("#deduct-order-button").removeAttr("disabled");
+                    break;
+                case StateBandon:
 
                     break;
                 default:
@@ -22,7 +25,7 @@ $(document).ready(function () {
 
             document.title = order.number;
 
-            $("#order-title").fillText({
+            $("#order-title, #deliver-order-title, #deduct-order-title").fillText({
                 number: order.number
             });
 
@@ -33,14 +36,15 @@ $(document).ready(function () {
                 type: order.type,
                 address: order.address,
                 remark: order.remark,
-                state: StateDescription[order.state]
-            });
-
-            $("#deliver-order-title").fillText({
-                number: order.number
+                state: StateDescription[order.state],
+                referrer: order.referrer.name,
+                worker: order.worker == null ? "未分配维修师傅" : order.worker.name,
+                price: order.price / 100.0,
+                deduct: order.deduct / 100.0
             });
 
             $("#deliver-order-type").val(order.type);
+            $("#deduct-order-price").val(order.price / 100.0);
         });
 
         WorkerManager.getWorkers(false, function (workers) {
@@ -77,6 +81,35 @@ $(document).ready(function () {
         price = parseInt(100 * price);
         if (validate) {
             OrderManager.deliver(oid, wid, price, type, function (success) {
+                if (success) {
+                    location.reload();
+                } else {
+                    location.href = "session.html";
+                }
+            });
+        }
+    });
+
+    $("#deduct-order-submit").click(function () {
+        var price = $("#deduct-order-price").val();
+        var deduct = $("#deduct-order-deduct").val();
+        var validate = true;
+        if (price == null || price == "" || !isNum(price)) {
+            $("#deduct-order-price").parent().addClass("has-error");
+            validate = false;
+        } else {
+            $("#deduct-order-price").parent().removeClass("has-error");
+        }
+        if (deduct == null || deduct == "" || !isNum(deduct)) {
+            $("#deduct-order-deduct").parent().addClass("has-error");
+            validate = false;
+        } else {
+            $("#deduct-order-deduct").parent().removeClass("has-error");
+        }
+        price = parseInt(100 * price);
+        deduct = parseInt(100 * deduct);
+        if (validate) {
+            OrderManager.deduct(oid, price, deduct, function (success) {
                 if (success) {
                     location.reload();
                 } else {
