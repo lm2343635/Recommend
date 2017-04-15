@@ -162,4 +162,23 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
         return true;
     }
 
+    @RemoteMethod
+    @Transactional
+    public boolean abandon(String oid, HttpSession session) {
+        if (!checkAdminSession(session)) {
+            return false;
+        }
+        Order order = orderDao.get(oid);
+        if (order == null) {
+            Debug.error("Cannot get order by this oid.");
+            return false;
+        }
+        if (order.getState() == StateDeduct) {
+            Debug.error("Order cannot be abondoned if state is StateDeduct.");
+            return false;
+        }
+        order.setState(StateAbandon);
+        orderDao.update(order);
+        return true;
+    }
 }

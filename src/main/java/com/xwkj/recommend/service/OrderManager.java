@@ -12,7 +12,7 @@ public interface OrderManager {
     public static final int StateDeliver = 1;
     public static final int StateFinish = 2;
     public static final int StateDeduct = 3;
-    public static final int StateBandon = -1;
+    public static final int StateAbandon = -1;
 
     /**
      * Create a new order by referrer.
@@ -83,5 +83,14 @@ public interface OrderManager {
      * @return
      */
     boolean deduct(String oid, int price, int deduct, HttpSession session);
+
+    /**
+     * Admin abandon the order.
+     *
+     * @param oid
+     * @param session
+     * @return
+     */
+    boolean abandon(String oid, HttpSession session);
 
 }

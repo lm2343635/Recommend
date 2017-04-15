@@ -2,14 +2,14 @@ var StateCreate = 0;
 var StateDeliver = 1;
 var StateFinish = 2;
 var StateDeduct = 3;
-var StateBandon = -1;
+var StateAbandon = -1;
 
 var StateDescription = {
     "0": "未派发",
     "1": "已派发",
     "2": "已完成",
     "3": "已结算",
-    "-1": "废弃"
+    "-1": "已废弃"
 };
 
 /**

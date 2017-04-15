@@ -16,8 +16,9 @@ $(document).ready(function () {
                 case StateFinish:
                     $("#deduct-order-button").removeAttr("disabled");
                     break;
-                case StateBandon:
-
+                case StateDeduct:
+                case StateAbandon:
+                    $("#abandon-order-button").attr("disabled", "disabled");
                     break;
                 default:
                     break;
@@ -117,5 +118,17 @@ $(document).ready(function () {
                 }
             });
         }
+    });
+
+    $("#abandon-order-button").click(function () {
+        $.messager.confirm("警告", "废弃订单后无法进行后续操作且不可恢复，确认要设置该订单为废弃订单吗？", function () {
+            OrderManager.abandon(oid, function (success) {
+                if (success) {
+                    location.reload();
+                } else {
+                    location.href = "session.html";
+                }
+            });
+        });
     });
 });
