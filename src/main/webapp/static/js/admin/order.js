@@ -39,6 +39,7 @@ $(document).ready(function () {
                 address: order.address,
                 remark: order.remark,
                 state: StateDescription[order.state],
+                color: StateColors[order.state],
                 referrer: order.referrer.name,
                 worker: order.worker == null ? "未分配维修师傅" : order.worker.name,
                 price: order.price / 100.0,

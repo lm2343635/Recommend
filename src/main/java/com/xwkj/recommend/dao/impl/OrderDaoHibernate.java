@@ -23,6 +23,11 @@ public class OrderDaoHibernate extends BaseHibernateDaoSupport<Order> implements
         return (List<Order>) getHibernateTemplate().find(hql, start, end);
     }
 
+    public List<Order> findByStartEndWithState(Date start, Date end, int state) {
+        String hql = "from Order where createAt >= ? and createAt <= ? and state = ? order by createAt desc";
+        return (List<Order>) getHibernateTemplate().find(hql, start, end, state);
+    }
+
     public List<Order> findByWorker(Worker worker, int state) {
         String hql = "from Order where worker = ? and state = ? order by createAt desc";
         return (List<Order>) getHibernateTemplate().find(hql, worker, state);

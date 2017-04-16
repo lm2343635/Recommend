@@ -51,11 +51,14 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
     }
 
     @RemoteMethod
-    public List<OrderBean> searchIn(String start, String end) {
-        Date startDate = DateTool.transferDate(start, DateTool.YEAR_MONTH_DATE_FORMAT);
-        Date endDate = DateTool.transferDate(end, DateTool.YEAR_MONTH_DATE_FORMAT);
+    public List<OrderBean> searchIn(String start, String end, int state) {
+        Date startDate = DateTool.transferDate(start + " 00:00:00", DateTool.DATE_HOUR_MINUTE_SECOND_FORMAT);
+        Date endDate = DateTool.transferDate(end + " 23:59:59", DateTool.DATE_HOUR_MINUTE_SECOND_FORMAT);
         List<OrderBean> orderBeans = new ArrayList<OrderBean>();
-        for (Order order : orderDao.findByStartEnd(startDate, endDate)) {
+        List<Order> orders = state == StateAll?
+                orderDao.findByStartEnd(startDate, endDate) :
+                orderDao.findByStartEndWithState(startDate, endDate, state);
+        for (Order order : orders) {
             orderBeans.add(new OrderBean(order, true));
         }
         return orderBeans;

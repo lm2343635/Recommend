@@ -13,6 +13,7 @@ public interface OrderManager {
     public static final int StateFinish = 2;
     public static final int StateDeduct = 3;
     public static final int StateAbandon = -1;
+    public static final int StateAll = 9;
 
     /**
      * Create a new order by referrer.
@@ -36,13 +37,14 @@ public interface OrderManager {
     OrderBean getOrder(String oid);
 
     /**
-     * Find all orders in a period.
+     * Find all orders in a period and state code.
      *
      * @param start
      * @param end
+     * @param state
      * @return
      */
-    List<OrderBean> searchIn(String start, String end);
+    List<OrderBean> searchIn(String start, String end, int state);
 
 
     /**

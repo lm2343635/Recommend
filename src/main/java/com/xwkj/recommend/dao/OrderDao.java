@@ -11,13 +11,23 @@ import java.util.List;
 public interface OrderDao extends BaseDao<Order> {
 
     /**
-     * Find order by start date and end date
+     * Find order by start date and end date.
      *
      * @param start
      * @param end
      * @return
      */
     List<Order> findByStartEnd(Date start, Date end);
+
+    /**
+     * Find order by start date, end date and state.
+     *
+     * @param start
+     * @param end
+     * @param state
+     * @return
+     */
+    List<Order> findByStartEndWithState(Date start, Date end, int state);
 
     /**
      * Find order by worker and state code

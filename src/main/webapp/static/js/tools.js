@@ -3,13 +3,23 @@ var StateDeliver = 1;
 var StateFinish = 2;
 var StateDeduct = 3;
 var StateAbandon = -1;
+var StateAll = 9;
 
 var StateDescription = {
     "0": "未派发",
     "1": "已派发",
     "2": "已完成",
     "3": "已结算",
-    "-1": "已废弃"
+    "-1": "已废弃",
+    "9": "所有"
+};
+
+var StateColors = {
+    "0": "text-muted",
+    "1": "text-warning",
+    "2": "text-primary",
+    "3": "text-success",
+    "-1": "text-danger"
 };
 
 /**
