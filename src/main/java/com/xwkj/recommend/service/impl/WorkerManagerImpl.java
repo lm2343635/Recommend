@@ -20,9 +20,13 @@ public class WorkerManagerImpl extends ManagerTemplate implements WorkerManager 
 
     @RemoteMethod
     @Transactional
-    public boolean addWorker(String number, String name, String password) {
+    public boolean addWorker(String number, String name, String password, HttpSession session) {
+        if (!checkAdminSession(session)) {
+            return false;
+        }
         Worker worker = workerDao.getByNumber(number);
         if (worker != null) {
+            Debug.error("Cannot find the worker by this worker number.");
             return false;
         }
         worker = new Worker();
@@ -31,6 +35,25 @@ public class WorkerManagerImpl extends ManagerTemplate implements WorkerManager 
         worker.setPassword(password);
         worker.setState(true);
         workerDao.save(worker);
+        return true;
+    }
+
+    @RemoteMethod
+    @Transactional
+    public boolean removeWorker(String wid, HttpSession session) {
+        if (!checkAdminSession(session)) {
+            return false;
+        }
+        Worker worker = workerDao.get(wid);
+        if (worker == null) {
+            Debug.error("Cannot find the worker by this wid.");
+            return false;
+        }
+        if (orderDao.getOrderCountForWorker(worker) > 0) {
+            Debug.error("Cannot delete this worker because this worker has orders.");
+            return false;
+        }
+        workerDao.delete(worker);
         return true;
     }
 

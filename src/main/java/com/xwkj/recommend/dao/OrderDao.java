@@ -45,4 +45,13 @@ public interface OrderDao extends BaseDao<Order> {
      * @return
      */
     List<Order> findByStateForReferrer(int state, Referrer referrer);
+
+    /**
+     * Get number of orders for a worker.
+     *
+     * @param worker
+     * @return
+     */
+    int getOrderCountForWorker(Worker worker);
+
 }

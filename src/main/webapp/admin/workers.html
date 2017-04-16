@@ -34,6 +34,10 @@
             line-height:34px;
             margin-bottom: 0;
         }
+
+        #worker-list .worker-list-template .worker-list-remove {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -55,14 +59,16 @@
                 <th>师傅姓名</th>
                 <th>账户密码</th>
                 <th>在职状态</th>
+                <th>删除</th>
             </tr>
             </thead>
             <tbody>
             <tr id="${wid}$" class="mengular-template worker-list-template">
                 <td>${number}$</td>
-                <td>${name}$</td>
+                <td class="worker-list-name">${name}$</td>
                 <td>${password}$</td>
                 <td class="worker-list-state"><input type="checkbox" data-size="mini" data-on-text="在职" data-off-text="离职"></td>
+                <td class="worker-list-remove"><i class="fa fa-trash-o fa-lg text-danger"></i></td>
             </tr>
             </tbody>
         </table>

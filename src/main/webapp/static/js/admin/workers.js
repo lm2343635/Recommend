@@ -54,6 +54,22 @@ function loadWorkers() {
                 var wid = $(this).mengularId();
                 WorkerManager.changeState(wid, state);
             });
+            
+            // Remove worker.
+            $("#" + worker.wid + " .worker-list-remove").click(function () {
+                var wid = $(this).mengularId();
+                var name = $("#" + wid + " .worker-list-name").text();
+                $.messager.confirm("提示", "确认删除维修师傅" + name + "？", function () {
+                    WorkerManager.removeWorker(wid, function (success) {
+                        if (success) {
+                            $("#" + wid).remove();
+                            $.messager.popup("删除成功");
+                        } else {
+                            $.messager.popup("已分配订单的师傅不能被删除！");
+                        }
+                    });
+                });
+            });
         }
     });
 }

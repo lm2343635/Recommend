@@ -10,14 +10,23 @@ public interface WorkerManager {
     public static final String WorkerFlag = "05b3dfd95b61d061594015b00d9061b0";
 
     /**
-     * Add a new worker
+     * Admin add a new worker
      *
      * @param number
      * @param name
      * @param password
      * @return If worker's number is existed, return false;
      */
-    boolean addWorker(String number, String name, String password);
+    boolean addWorker(String number, String name, String password, HttpSession session);
+
+    /**
+     * Admin remoce a worker.
+     *
+     * @param wid
+     * @param session
+     * @return
+     */
+    boolean removeWorker(String wid, HttpSession session);
 
     /**
      * Get all worker for admin
