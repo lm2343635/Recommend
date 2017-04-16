@@ -1,6 +1,10 @@
 $(document).ready(function () {
 
     checkWorkerSession(function (worker) {
+        if (!worker.status) {
+            location.href = "dimission.html";
+            return;
+        }
 
         $("#worker-info").fillText({
             number: worker.number,
