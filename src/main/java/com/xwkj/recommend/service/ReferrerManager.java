@@ -63,4 +63,13 @@ public interface ReferrerManager {
      */
     boolean apply(HttpSession session);
 
+    /**
+     * Admin withdraw balance for referrer.
+     *
+     * @param rid
+     * @param session
+     * @return
+     */
+    boolean withdraw(String rid, HttpSession session);
+
 }

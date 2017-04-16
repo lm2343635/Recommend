@@ -86,4 +86,21 @@ public class ReferrerManagerImpl extends ManagerTemplate implements ReferrerMana
         return true;
     }
 
+    @RemoteMethod
+    @Transactional
+    public boolean withdraw(String rid, HttpSession session) {
+        if (!checkAdminSession(session)) {
+            return false;
+        }
+        Referrer referrer = referrerDao.get(rid);
+        if (referrer == null) {
+            Debug.error("Cannot find the referrer by this rid.");
+            return false;
+        }
+        referrer.setApplying(false);
+        referrer.setBalance(0);
+        referrerDao.update(referrer);
+        return true;
+    }
+
 }

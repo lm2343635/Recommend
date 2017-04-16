@@ -7,8 +7,13 @@
     <title>快易代理</title>
     <link href="/static/images/favicon.ico" type="image/x-icon" rel="icon">
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-switch.min.css" rel="stylesheet">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
     <link href="/static/css/mengular.css" rel="stylesheet">
     <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap-switch.min.js"></script>
+    <script src="/static/js/jquery.bootstrap.min.js"></script>
     <script src="/static/js/mengular.js"></script>
     <script src="/static/js/tools.js"></script>
     <script src="/dwr/engine.js"></script>
@@ -34,6 +39,7 @@
                 <th>分销商姓名</th>
                 <th>微信账户</th>
                 <th>账户密码</th>
+                <th>提现状态</th>
             </tr>
             </thead>
             <tbody>
@@ -42,6 +48,7 @@
                 <td>${name}$</td>
                 <td>${wechat}$</td>
                 <td>${password}$</td>
+                <td class="referrer-list-applying"><input type="checkbox" data-size="mini" data-on-text="已申请" data-off-text="未申请" disabled></td>
             </tr>
             </tbody>
         </table>
