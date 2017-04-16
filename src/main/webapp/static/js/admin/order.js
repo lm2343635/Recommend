@@ -24,14 +24,15 @@ $(document).ready(function () {
                     break;
             }
 
-            document.title = order.number;
-
             $("#order-title, #deliver-order-title, #deduct-order-title").fillText({
                 number: order.number
             });
 
             $("#order-info").fillText({
                 createAt: order.createAt.format(DATE_HOUR_FORMAT),
+                deliverAt: order.deliverAt == null ? "未派发" : order.deliverAt.format(DATE_HOUR_FORMAT),
+                finishAt: order.finishAt == null ? "未完成" : order.finishAt .format(DATE_HOUR_FORMAT),
+                deductAt: order.deductAt == null ? "未结算" : order.deductAt.format(DATE_HOUR_FORMAT),
                 name: order.name,
                 telephone: order.telephone,
                 type: order.type,
