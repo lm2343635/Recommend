@@ -172,6 +172,11 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
         order.setDeductAt(new Date());
         order.setState(StateDeduct);
         orderDao.update(order);
+        orderDao.update(order);
+        // Add balance for referrer.
+        Referrer referrer = order.getReferrer();
+        referrer.setBalance(referrer.getBalance() + order.getDeduct());
+        referrerDao.update(referrer);
         return true;
     }
 
@@ -191,7 +196,6 @@ public class OrderManagerImpl extends ManagerTemplate implements OrderManager {
             return false;
         }
         order.setState(StateAbandon);
-        orderDao.update(order);
         return true;
     }
 }

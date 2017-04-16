@@ -24,12 +24,12 @@ public class OrderDaoHibernate extends BaseHibernateDaoSupport<Order> implements
     }
 
     public List<Order> findByWorker(Worker worker, int state) {
-        String hql = "from Order where worker = ? and state = ?";
+        String hql = "from Order where worker = ? and state = ? order by createAt desc";
         return (List<Order>) getHibernateTemplate().find(hql, worker, state);
     }
 
     public List<Order> findByStateForReferrer(int state, Referrer referrer) {
-        String hql = "from Order where state = ? and referrer = ?";
+        String hql = "from Order where state = ? and referrer = ? order by createAt desc";
         return (List<Order>) getHibernateTemplate().find(hql, state, referrer);
     }
 

@@ -29,6 +29,15 @@
         #order-info {
             display: none;
         }
+
+        #order-info .weui-form-preview__value {
+            max-height: 54px;
+            overflow: auto;
+        }
+
+        #order-list {
+            margin-bottom: 60px;
+        }
     </style>
 </head>
 <body>
@@ -132,7 +141,7 @@
                 </div>
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">维修师傅</label>
-                    <span class="weui-form-preview__value">@{type}</span>
+                    <span class="weui-form-preview__value">@{worker}</span>
                 </div>
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">成交价格</label>

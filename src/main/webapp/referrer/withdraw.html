@@ -1,0 +1,115 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>余额提现</title>
+    <link rel="Shortcut Icon" href="static/images/favicon.ico">
+    <link rel="stylesheet" href="/static/css/weui.min.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/mengular.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/mengular.js"></script>
+    <script src="/static/js/weui.min.js"></script>
+    <script src="/static/js/tools.js"></script>
+    <script src="/dwr/engine.js"></script>
+    <script src="/dwr/interface/ReferrerManager.js"></script>
+    <script src="/static/js/referrer/withdraw.js"></script>
+    <style>
+        #page .page__bd {
+            padding: 0;
+        }
+
+        #page .page__bd .icon-box {
+            margin: 20px;
+
+        }
+
+        #page .page__bd .icon-box .weui-icon_msg {
+            float: left;
+        }
+
+        #page .page__bd .icon-box .icon-box__ctn {
+            float: left;
+            margin-top: 15px;
+        }
+
+        #apply-applying,
+        #apply-disabled,
+        #apply-enable {
+            display: none;
+        }
+
+        #apply-submit {
+            margin-top: 20px;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+<div id="page" class="page icons tabbar js_show">
+    <div class="page__bd" style="height: 100%;">
+        <div class="weui-tab">
+            <div class="weui-tab__panel">
+                <div id="referrer-info" class="weui-cells weui-cells_form">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+                        <div class="weui-cell__bd">
+                            <p>@{name}</p>
+                        </div>
+                    </div>
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd"><label class="weui-label">电话</label></div>
+                        <div class="weui-cell__bd">
+                            <p>@{telephone}</p>
+                        </div>
+                    </div>
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd"><label class="weui-label">微信号</label></div>
+                        <div class="weui-cell__bd">
+                            <p>@{wechat}</p>
+                        </div>
+                    </div>
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd"><label class="weui-label">余额</label></div>
+                        <div class="weui-cell__bd">
+                            <p>@{balance}</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="apply-enable" class="icon-box">
+                    <i class="weui-icon-success weui-icon_msg"></i>
+                    <div class="icon-box__ctn">
+                        <h3 class="icon-box__title">申请提现</h3>
+                        <p class="icon-box__desc">当前可以申请余额体现！</p>
+                    </div>
+                </div>
+                <div id="apply-disabled" class="icon-box">
+                    <i class="weui-icon-warn weui-icon_msg"></i>
+                    <div class="icon-box__ctn">
+                        <h3 class="icon-box__title">暂无余额</h3>
+                        <p class="icon-box__desc">马上创建订单赚提成吧！</p>
+                    </div>
+                </div>
+                <div id="apply-applying" class="icon-box">
+                    <i class="weui-icon-waiting weui-icon_msg"></i>
+                    <div class="icon-box__ctn">
+                        <h3 class="icon-box__title">等待体现</h3>
+                        <p class="icon-box__desc">提现申请已提交，请等待管理员联系！</p>
+                    </div>
+                </div>
+                <div class="weui-btn-area">
+                    <button id="apply-submit" class="weui-btn weui-btn_primary">申请提现</button>
+                </div>
+            </div>
+            <div id="foot">
+                <script>$("#foot").load("foot.html");</script>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

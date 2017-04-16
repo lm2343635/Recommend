@@ -48,10 +48,19 @@ public interface ReferrerManager {
     boolean login(String telephone, String password, HttpSession session);
 
     /**
-     * 
+     * Check referrer session
+     *
      * @param session
      * @return
      */
     ReferrerBean checkSession(HttpSession session);
+
+    /**
+     * Referrer apply to withdraw balance.
+     *
+     * @param session
+     * @return
+     */
+    boolean apply(HttpSession session);
 
 }
