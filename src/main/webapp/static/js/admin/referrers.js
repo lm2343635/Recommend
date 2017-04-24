@@ -9,7 +9,8 @@ $(document).ready(function () {
                     telephone: referrer.telephone,
                     name: referrer.name,
                     wechat: referrer.wechat,
-                    password: referrer.password
+                    password: referrer.password,
+                    balance: referrer.balance / 100.0
                 });
 
                 if (referrer.applying) {
@@ -25,7 +26,7 @@ $(document).ready(function () {
                     var rid = $(this).mengularId();
                     ReferrerManager.withdraw(rid, function (success) {
                         if (success) {
-
+                            $("#" + rid + " .referrer-list-balance").text(0);
                         } else {
                             location.href = "session.html";
                         }
