@@ -1,7 +1,8 @@
 $(document).ready(function () {
 
     checkWorkerSession(function (worker) {
-        if (!worker.status) {
+
+        if (!worker.state) {
             location.href = "dimission.html";
             return;
         }
