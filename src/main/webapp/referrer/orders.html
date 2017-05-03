@@ -35,8 +35,10 @@
             overflow: auto;
         }
 
-        #order-list {
+        #explain {
             margin-bottom: 60px;
+            font-size: 13px;
+            color: #5d5d5d;
         }
     </style>
 </head>
@@ -74,17 +76,25 @@
                                 </div>
                                 <div class="weui-form-preview__item">
                                     <label class="weui-form-preview__label">成交价格</label>
-                                    <span class="weui-form-preview__value">${price}$</span>
+                                    <span class="weui-form-preview__value">${price}$元</span>
                                 </div>
                                 <div class="weui-form-preview__item">
                                     <label class="weui-form-preview__label">提成金额</label>
-                                    <span class="weui-form-preview__value">${deduct}$</span>
+                                    <span class="weui-form-preview__value">${deduct}$元</span>
                                 </div>
                             </div>
                             <div class="weui-form-preview__ft">
                                 <button class="weui-form-preview__btn weui-form-preview__btn_primary order-list-moore">查看更多</button>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div id="explain" class="weui-panel__bd">
+                    <div class="weui-media-box weui-media-box_text">
+                        <h4 class="weui-media-box__title">快易代理人员佣金返利说明：</h4>
+                        <p>1. 家电清洗项目订单提交，例：提交的油烟机清洗订单由快易师傅完成后，系统将在“我的订单-已完成”处显示佣金金额。</p>
+                        <p>2. 家电维修与安装项目订单提交，由于维修与安装费用不可预算，快易代理提交订单并由快易师傅完成后，余额会由系统分配并出现在“我的订单-已完成”处。</p>
+                        <p>3. 家庭保洁项目订单提交，由于保洁项目费用不可预算，快易代理提交订单并由快易师傅完成后，余额会由系统分配并出现在“我的订单-已完成”处。</p>
                     </div>
                 </div>
             </div>

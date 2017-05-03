@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>余额提现</title>
+    <title>申请提现</title>
     <link rel="Shortcut Icon" href="static/images/favicon.ico">
     <link rel="stylesheet" href="/static/css/weui.min.css">
     <link rel="stylesheet" href="/static/css/font-awesome.min.css">
@@ -46,6 +46,11 @@
             display: none;
         }
 
+        .weui-media-box_text {
+            font-size: 13px;
+            color: #5d5d5d;
+        }
+
     </style>
 </head>
 <body>
@@ -75,8 +80,15 @@
                     <div class="weui-cell">
                         <div class="weui-cell__hd"><label class="weui-label">余额</label></div>
                         <div class="weui-cell__bd">
-                            <p>@{balance}</p>
+                            <p>@{balance}元</p>
                         </div>
+                    </div>
+                </div>
+                <div class="weui-panel__bd">
+                    <div class="weui-media-box weui-media-box_text">
+                        <h4 class="weui-media-box__title">快易代理余额提现说明：</h4>
+                        <p>1. 快易代理提报订单并完成后，赢取的佣金，可在快易代理平台“申请提现”处显示详细明细，快易代理人员可通过点击“申请提现”，由快易家电微信统一发放。</p>
+                        <p>2. 快易家电针对快易代理一次性提现佣金达到500元的，额外给予50元奖励，达到1000元的，额外给予100元奖励。</p>
                     </div>
                 </div>
                 <div id="apply-enable" class="icon-box">
@@ -90,14 +102,13 @@
                     <i class="weui-icon-warn weui-icon_msg"></i>
                     <div class="icon-box__ctn">
                         <h3 class="icon-box__title">暂无余额</h3>
-                        <p class="icon-box__desc">马上创建订单赚提成吧！</p>
                     </div>
                 </div>
                 <div id="apply-applying" class="icon-box">
                     <i class="weui-icon-waiting weui-icon_msg"></i>
                     <div class="icon-box__ctn">
                         <h3 class="icon-box__title">等待体现</h3>
-                        <p class="icon-box__desc">提现申请已提交，请等待管理员联系！</p>
+                        <p class="icon-box__desc">申请已提交，请耐心等待，客服会第一时间联系你！</p>
                     </div>
                 </div>
                 <div class="weui-btn-area">

@@ -28,8 +28,9 @@
             font-weight: bold;
         }
 
-        #create-type-list .type-list-template {
-            /*display: none;*/
+        #create-type-list .weui-cell__bd p {
+            font-size: 13px;
+            color: #5d5d5d;
         }
 
     </style>
@@ -68,11 +69,11 @@
                 <div id="create-type-list" class="weui-cells weui-cells_checkbox">
                     <label class="weui-cell weui-check__label mengular-template type-list-template ${category}$">
                         <div class="weui-cell__hd">
-                            <input type="checkbox" class="weui-check" name="create-type" value="${type}$">
+                            <input type="checkbox" class="weui-check" name="create-type" value="${value}$">
                             <i class="weui-icon-checked"></i>
                         </div>
                         <div class="weui-cell__bd">
-                            <p>${type}$</p>
+                            <p>${name}$</p>
                         </div>
                     </label>
                 </div>
