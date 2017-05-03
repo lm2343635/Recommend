@@ -17,10 +17,25 @@
     <script src="/dwr/interface/ReferrerManager.js"></script>
     <script src="/dwr/interface/OrderManager.js"></script>
     <script src="/static/js/referrer/create.js"></script>
+    <style>
+        #type-category span {
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        #type-category .active {
+            color: #2e6da4;
+            font-weight: bold;
+        }
+
+        #create-type-list .type-list-template {
+            /*display: none;*/
+        }
+
+    </style>
 </head>
 <body>
 <div class="page tabbar js_show">
-
     <div class="page__bd" style="height: 100%;">
         <div class="weui-tab">
             <div class="weui-tab__panel">
@@ -49,9 +64,9 @@
                     </div>
                 </div>
 
-                <div class="weui-cells__title">项目选择</div>
+                <div id="type-category" class="weui-cells__title"></div>
                 <div id="create-type-list" class="weui-cells weui-cells_checkbox">
-                    <label class="weui-cell weui-check__label mengular-template type-list-template">
+                    <label class="weui-cell weui-check__label mengular-template type-list-template ${category}$">
                         <div class="weui-cell__hd">
                             <input type="checkbox" class="weui-check" name="create-type" value="${type}$">
                             <i class="weui-icon-checked"></i>
