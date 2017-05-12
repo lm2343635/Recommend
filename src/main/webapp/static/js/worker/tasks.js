@@ -22,6 +22,7 @@ $(document).ready(function () {
                     telephone: order.telephone,
                     address: order.address,
                     type: order.type,
+                    price: order.price / 100.0,
                     createAt: order.createAt.format(DATE_HOUR_MINUTE_SECOND_FORMAT),
                     deliverAt: order.deliverAt.format(DATE_HOUR_MINUTE_SECOND_FORMAT)
                 });
