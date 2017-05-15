@@ -34,7 +34,11 @@ function loadReferrerByState(state) {
                 deduct: order.deduct / 100.0
             });
 
-            $("#" + order.oid + " .order-list-moore").click(function () {
+            if (order.state == StateFinish || order.state == StateDeduct) {
+                $("#" + order.oid + " .order-list-price").show();
+            }
+
+            $("#" + order.oid + " .order-list-more").click(function () {
                 var oid = $(this).mengularId();
                 OrderManager.getOrder(oid, function (order) {
                     $("#order-info .weui-form-preview__bd").fillText({
@@ -54,6 +58,7 @@ function loadReferrerByState(state) {
                         price: order.price / 100.0,
                         deduct: order.deduct / 100.0
                     });
+
                     $("#order-info").show();
                 });
 

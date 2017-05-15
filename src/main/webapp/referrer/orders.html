@@ -35,6 +35,10 @@
             overflow: auto;
         }
 
+        #order-list .order-list-price {
+            display: none;
+        }
+
         #explain {
             margin-bottom: 60px;
             font-size: 13px;
@@ -78,13 +82,13 @@
                                     <label class="weui-form-preview__label">成交价格</label>
                                     <span class="weui-form-preview__value">${price}$元</span>
                                 </div>
-                                <div class="weui-form-preview__item">
+                                <div class="weui-form-preview__item order-list-price">
                                     <label class="weui-form-preview__label">提成金额</label>
                                     <span class="weui-form-preview__value">${deduct}$元</span>
                                 </div>
                             </div>
                             <div class="weui-form-preview__ft">
-                                <button class="weui-form-preview__btn weui-form-preview__btn_primary order-list-moore">查看更多</button>
+                                <button class="weui-form-preview__btn weui-form-preview__btn_primary order-list-more">查看更多</button>
                             </div>
                         </div>
                     </div>
